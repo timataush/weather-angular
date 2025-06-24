@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 
 interface ForecastItem {
   day: string;
@@ -9,7 +9,7 @@ interface ForecastItem {
 
 @Component({
     selector: 'app-weather',
-    imports: [CommonModule],
+    imports: [],
     templateUrl: './weather.html',
     styleUrls: ['./weather.scss']
 })

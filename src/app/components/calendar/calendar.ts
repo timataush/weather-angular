@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 
 interface CalendarEvent {
   time: string;
@@ -8,7 +8,7 @@ interface CalendarEvent {
 
 @Component({
     selector: 'app-calendar',
-    imports: [CommonModule],
+    imports: [],
     templateUrl: './calendar.html',
     styleUrls: ['./calendar.scss']
 })

@@ -23,15 +23,21 @@
     <div class="current-temp">{{ currentTemp }}°</div>
   </div>
 
-  <div class="forecast-grid" *ngIf="!isLoading">
-    <div class="forecast-item" *ngFor="let item of forecast">
-      <div class="forecast-day">{{ item.day }}</div>
-      <div class="forecast-icon">{{ item.icon }}</div>
-      <div class="forecast-temp">{{ item.temp }}°</div>
+  @if (!isLoading) {
+    <div class="forecast-grid">
+      @for (item of forecast; track item) {
+        <div class="forecast-item">
+          <div class="forecast-day">{{ item.day }}</div>
+          <div class="forecast-icon">{{ item.icon }}</div>
+          <div class="forecast-temp">{{ item.temp }}°</div>
+        </div>
+      }
     </div>
-  </div>
+  }
 
-  <div class="loading" *ngIf="isLoading">
-    <div class="spinner"></div>
-  </div>
+  @if (isLoading) {
+    <div class="loading">
+      <div class="spinner"></div>
+    </div>
+  }
 </div>

@@ -1,8 +1,10 @@
 <div class="calendar-section">
   <div class="events-list">
-    <div class="event-item" *ngFor="let event of events">
-      <div class="event-time">{{ event.time }}</div>
-      <div class="event-title">{{ event.title }}</div>
-    </div>
+    @for (event of events; track event) {
+      <div class="event-item">
+        <div class="event-time">{{ event.time }}</div>
+        <div class="event-title">{{ event.title }}</div>
+      </div>
+    }
   </div>
 </div>

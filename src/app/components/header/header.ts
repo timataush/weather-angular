@@ -1,11 +1,11 @@
 import { Component, Output, EventEmitter, OnInit, OnDestroy } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { FormsModule } from '@angular/forms';
 import { interval, Subscription } from 'rxjs';
 
 @Component({
     selector: 'app-header',
-    imports: [CommonModule, FormsModule],
+    imports: [FormsModule],
     templateUrl: './header.html',
     styleUrls: ['./header.scss']
 })

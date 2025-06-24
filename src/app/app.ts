@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { HeaderComponent } from './components/header/header';
 import { WeatherComponent } from './components/weather/weather';
 import { CalendarComponent } from './components/calendar/calendar';
 
 @Component({
     selector: 'app-root',
-    imports: [CommonModule, HeaderComponent, WeatherComponent, CalendarComponent],
+    imports: [HeaderComponent, WeatherComponent, CalendarComponent],
     template: `
     <div class="weather-bg" [class]="weatherCondition"></div>
 
