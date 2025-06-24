@@ -6,13 +6,41 @@
 
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-  background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+  //background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+
   min-height: 100vh;
   background-size: cover;
   background-position: center;
   position: relative;
   overflow-x: hidden;
 }
+
+//.weather-bg {
+//  position: fixed;
+//  top: 0;
+//  left: 0;
+//  width: 100%;
+//  height: 100%;
+//  background-size: cover;
+//  background-position: center;
+//  z-index: -1;
+//  transition: all 0.8s ease;
+//
+//  &.sunny {
+//    background:
+//      //linear-gradient(135deg, #74b9ff 0%, #0984e3 100%),
+//    url('./img/nature.png');
+//  }
+//
+//  &.cloudy {
+//    background: linear-gradient(135deg, #636e72 0%, #2d3436 100%);
+//  }
+//
+//  &.rainy {
+//    background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+//  }
+//}
+
 
 .weather-bg {
   position: fixed;
@@ -25,19 +53,44 @@ body {
   z-index: -1;
   transition: all 0.8s ease;
 
+  &.clear {
+    background: linear-gradient(to bottom, rgba(148,187,233,0.8) 0%, rgba(200,223,240,0.8) 100%),
+    url('https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+  }
+
   &.sunny {
-    background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%),
-    url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><radialGradient id="sun" cx="50%" cy="30%" r="15%"><stop offset="0%" stop-color="%23ffeb3b" stop-opacity="0.8"/><stop offset="100%" stop-color="%23ffeb3b" stop-opacity="0"/></radialGradient></defs><rect width="100%" height="100%" fill="url(%23sun)"/></svg>');
+    background: linear-gradient(to bottom, rgba(255,204,0,0.2) 0%, rgba(255,229,153,0.2) 100%),
+    url('https://images.unsplash.com/photo-1566228015668-4c45dbc4e2f5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
   }
 
   &.cloudy {
-    background: linear-gradient(135deg, #636e72 0%, #2d3436 100%);
+    background: linear-gradient(to bottom, rgba(189,195,199,0.7) 0%, rgba(113,121,126,0.7) 100%),
+    url('https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
   }
 
   &.rainy {
-    background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+    background: linear-gradient(to bottom, rgba(41,128,185,0.7) 0%, rgba(109,213,237,0.7) 100%),
+    url('https://images.unsplash.com/photo-1519692933481-e162a57d6721?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+  }
+
+  &.snowy {
+    background: linear-gradient(to bottom, rgba(209,228,239,0.7) 0%, rgba(235,245,251,0.7) 100%),
+    url('https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+  }
+
+  &.thunderstorm {
+    background: linear-gradient(to bottom, rgba(45,52,54,0.8) 0%, rgba(99,110,114,0.8) 100%),
+    url('https://images.unsplash.com/photo-1534088568595-a066f410bcda?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+  }
+
+  &.foggy {
+    background: linear-gradient(to bottom, rgba(189,195,199,0.8) 0%, rgba(223,228,234,0.8) 100%),
+    url('https://images.unsplash.com/photo-1504253163759-c23fccaebb55?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
   }
 }
+
+
+
 
 .glass-container {
   background: rgba(255, 255, 255, 0.1);
@@ -63,15 +116,18 @@ body {
 }
 
 .btn {
-  padding: 12px 24px;
+  padding: 15px 32px;
   border: none;
-  border-radius: 25px;
+  border-radius: 12px;
   font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s ease;
   font-weight: 600;
   position: relative;
   overflow: hidden;
+
+  width: 150px;
+
 
   &:hover {
     transform: translateY(-2px);
@@ -84,16 +140,16 @@ body {
   }
 
   &.btn-secondary {
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(0, 0, 0, 0.8);
     color: white;
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    //border: 1px solid rgba(255, 255, 255, 0.3);
   }
 }
 
 .search-input {
   padding: 12px 20px;
   border: none;
-  border-radius: 25px;
+  border-radius: 12px;
   background: rgba(255, 255, 255, 0.9);
   font-size: 1rem;
   min-width: 200px;

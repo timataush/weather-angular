@@ -1,7 +1,7 @@
 .weather-controls {
   display: flex;
   gap: 15px;
-  justify-content: center;
+  justify-content: flex-end;
   margin-bottom: 30px;
 }
 
@@ -27,7 +27,7 @@
 
 .weather-icon {
   font-size: 3rem;
-  animation: float 3s ease-in-out infinite;
+  //animation: float 3s ease-in-out infinite;
 }
 
 .forecast-grid {
@@ -39,7 +39,6 @@
 .forecast-item {
   text-align: center;
   padding: 15px;
-  background: rgba(255, 255, 255, 0.1);
   border-radius: 10px;
   transition: all 0.3s ease;
 

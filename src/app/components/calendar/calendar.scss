@@ -1,15 +1,7 @@
 .calendar-section {
-  background: rgba(255, 255, 255, 0.1);
+  //background: rgba(255, 255, 255, 0.1);
   border-radius: 15px;
   padding: 20px;
-  margin-bottom: 30px;
-}
-
-.calendar-title {
-  color: white;
-  font-size: 1.2rem;
-  margin-bottom: 15px;
-  text-align: center;
 }
 
 .events-list {
@@ -23,9 +15,9 @@
   align-items: center;
   gap: 15px;
   padding: 10px 15px;
-  background: rgba(255, 255, 255, 0.1);
   border-radius: 10px;
   transition: all 0.3s ease;
+  max-width: fit-content;
 
   &:hover {
     background: rgba(255, 255, 255, 0.2);
