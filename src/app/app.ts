@@ -5,10 +5,9 @@ import { WeatherComponent } from './components/weather/weather';
 import { CalendarComponent } from './components/calendar/calendar';
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [CommonModule, HeaderComponent, WeatherComponent, CalendarComponent],
-  template: `
+    selector: 'app-root',
+    imports: [CommonModule, HeaderComponent, WeatherComponent, CalendarComponent],
+    template: `
     <div class="weather-bg" [class]="weatherCondition"></div>
 
     <div class="app-container">
@@ -19,7 +18,7 @@ import { CalendarComponent } from './components/calendar/calendar';
       </div>
     </div>
   `,
-  styles: [`
+    styles: [`
     .app-container {
       min-height: 100vh;
       display: flex;

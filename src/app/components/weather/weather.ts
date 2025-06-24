@@ -8,11 +8,10 @@ interface ForecastItem {
 }
 
 @Component({
-  selector: 'app-weather',
-  standalone: true,
-  imports: [CommonModule],
-  templateUrl: './weather.html',
-  styleUrls: ['./weather.scss']
+    selector: 'app-weather',
+    imports: [CommonModule],
+    templateUrl: './weather.html',
+    styleUrls: ['./weather.scss']
 })
 export class WeatherComponent implements OnInit {
   currentTemp = 2;

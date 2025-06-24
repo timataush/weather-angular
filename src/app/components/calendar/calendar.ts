@@ -7,11 +7,10 @@ interface CalendarEvent {
 }
 
 @Component({
-  selector: 'app-calendar',
-  standalone: true,
-  imports: [CommonModule],
-  templateUrl: './calendar.html',
-  styleUrls: ['./calendar.scss']
+    selector: 'app-calendar',
+    imports: [CommonModule],
+    templateUrl: './calendar.html',
+    styleUrls: ['./calendar.scss']
 })
 export class CalendarComponent implements OnInit {
   events: CalendarEvent[] = [

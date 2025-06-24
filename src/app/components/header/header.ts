@@ -4,11 +4,10 @@ import { FormsModule } from '@angular/forms';
 import { interval, Subscription } from 'rxjs';
 
 @Component({
-  selector: 'app-header',
-  standalone: true,
-  imports: [CommonModule, FormsModule],
-  templateUrl: './header.html',
-  styleUrls: ['./header.scss']
+    selector: 'app-header',
+    imports: [CommonModule, FormsModule],
+    templateUrl: './header.html',
+    styleUrls: ['./header.scss']
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   @Output() weatherConditionChange = new EventEmitter<string>();
