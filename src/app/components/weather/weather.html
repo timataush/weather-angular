@@ -1,0 +1,37 @@
+<div class="weather-controls">
+  <button
+    class="btn"
+    [class.btn-primary]="currentView === 'daily'"
+    [class.btn-secondary]="currentView !== 'daily'"
+    (click)="switchView('daily')"
+    data-cy="daily-btn">
+    Daily
+  </button>
+  <button
+    class="btn"
+    [class.btn-primary]="currentView === 'hourly'"
+    [class.btn-secondary]="currentView !== 'hourly'"
+    (click)="switchView('hourly')"
+    data-cy="hourly-btn">
+    Hourly
+  </button>
+</div>
+
+<div class="forecast-section">
+  <div class="current-weather">
+    <div class="weather-icon">{{ currentIcon }}</div>
+    <div class="current-temp">{{ currentTemp }}°</div>
+  </div>
+
+  <div class="forecast-grid" *ngIf="!isLoading">
+    <div class="forecast-item" *ngFor="let item of forecast">
+      <div class="forecast-day">{{ item.day }}</div>
+      <div class="forecast-icon">{{ item.icon }}</div>
+      <div class="forecast-temp">{{ item.temp }}°</div>
+    </div>
+  </div>
+
+  <div class="loading" *ngIf="isLoading">
+    <div class="spinner"></div>
+  </div>
+</div>

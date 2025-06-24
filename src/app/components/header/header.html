@@ -1,0 +1,37 @@
+<div class="header">
+  <div class="time-date">
+    <div class="time">{{ currentTime }}</div>
+    <div class="date">{{ currentDate }}</div>
+  </div>
+</div>
+
+<div class="search-section">
+  <div class="search-container">
+    <input
+      type="text"
+      class="search-input"
+      [(ngModel)]="cityInput"
+      (input)="onCityInput($event)"
+      (keypress)="$event.key === 'Enter' && searchCity()"
+      placeholder="Enter city name...">
+
+    <div class="suggestions" *ngIf="showSuggestions">
+      <div
+        class="suggestion-item"
+        *ngFor="let city of suggestions"
+        (click)="selectSuggestion(city)">
+        {{ city }}
+      </div>
+    </div>
+  </div>
+  <button class="btn btn-primary" (click)="searchCity()" data-cy="search-btn">Search</button>
+</div>
+
+<div class="auth-section">
+  <button class="btn btn-primary" (click)="signIn()" data-cy="sign-in-btn">
+    {{ isSignedIn ? 'Sign Out' : 'Sign In' }}
+  </button>
+  <button class="btn btn-secondary" (click)="signUp()" *ngIf="!isSignedIn">
+    Sign Up
+  </button>
+</div>
