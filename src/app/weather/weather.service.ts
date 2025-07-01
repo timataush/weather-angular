@@ -93,6 +93,7 @@ export class WeatherService {
           `${apiConfig.host}/weather?appid=${apiConfig.appId}&lat=${latitude}&lon=${longitude}&units=${this.unitSystem}`,
         ),
       ),
+
       map((data: any) => {
         const weather = this.handleResponseWeatherData(data)
         this.weather.next(weather)
@@ -117,38 +118,86 @@ export class WeatherService {
     )
   }
 
+  // private handleResponseWeatherData(responseData: any): Weather {
+  //   const { name, main, weather, wind, sys, dt } = responseData
+  //
+  //   const testTemperature = -15; // Холодная температура
+  //   const isCold = true;
+  //
+  //   this.currentWeatherTimestamp = dt
+  //
+  //   const updateAt = new Date().getTime()
+  //   const iconClassname = this.weatherIconsService.getIconClassNameByCode(weather[0].id, sys.sunset)
+  //   const temperature = Math.round(main.temp)
+  //   const pressureInHpa = Math.round(main.pressure)
+  //   const pressure =
+  //     this.unitSystem === appConfig.defaultUnit ? this.helperService.getPressureInMmHg(pressureInHpa) : pressureInHpa
+  //   const windDegrees = Math.round(wind.deg)
+  //   const windDirection = this.helperService.getWindDirection(windDegrees)
+  //   const windBeaufortScale = this.helperService.getWindBeaufortScaleByMeterInSecond(wind.speed)
+  //   const sunriseTime = sys.sunrise * 1000
+  //   const sunsetTime = sys.sunset * 1000
+  //
+  //   return new Weather(
+  //     updateAt,
+  //     name,
+  //     iconClassname,
+  //     temperature,
+  //     main.humidity,
+  //   pressure,
+  //     weather[0].description,
+  //     sunriseTime,
+  //     sunsetTime,
+  //     windDirection,
+  //     wind.speed,
+  //     windBeaufortScale,
+  //   )
+  // }
+
+
   private handleResponseWeatherData(responseData: any): Weather {
-    const { name, main, weather, wind, sys, dt } = responseData
+    const { name, main, weather, wind, sys, dt } = responseData;
+    this.currentWeatherTimestamp = dt;
 
-    this.currentWeatherTimestamp = dt
+    const updateAt = new Date().getTime();
+    const temperature = Math.round(main.temp);
+    const isCold = temperature < -10; // Определяем холодную погоду
 
-    const updateAt = new Date().getTime()
-    const iconClassname = this.weatherIconsService.getIconClassNameByCode(weather[0].id, sys.sunset)
-    const temperature = Math.round(main.temp)
-    const pressureInHpa = Math.round(main.pressure)
-    const pressure =
-      this.unitSystem === appConfig.defaultUnit ? this.helperService.getPressureInMmHg(pressureInHpa) : pressureInHpa
-    const windDegrees = Math.round(wind.deg)
-    const windDirection = this.helperService.getWindDirection(windDegrees)
-    const windBeaufortScale = this.helperService.getWindBeaufortScaleByMeterInSecond(wind.speed)
-    const sunriseTime = sys.sunrise * 1000
-    const sunsetTime = sys.sunset * 1000
+    // Передаем температуру в метод получения иконки
+    const iconClassname = this.weatherIconsService.getIconClassNameByCode(
+        weather[0].id,
+        sys.sunset,
+        temperature
+    );
+
+    const pressureInHpa = Math.round(main.pressure);
+    const pressure = this.unitSystem === appConfig.defaultUnit
+        ? this.helperService.getPressureInMmHg(pressureInHpa)
+        : pressureInHpa;
+    const windDegrees = Math.round(wind.deg);
+    const windDirection = this.helperService.getWindDirection(windDegrees);
+    const windBeaufortScale = this.helperService.getWindBeaufortScaleByMeterInSecond(wind.speed);
+    const sunriseTime = sys.sunrise * 1000;
+    const sunsetTime = sys.sunset * 1000;
 
     return new Weather(
-      updateAt,
-      name,
-      iconClassname,
-      temperature,
-      main.humidity,
-      pressure,
-      weather[0].description,
-      sunriseTime,
-      sunsetTime,
-      windDirection,
-      wind.speed,
-      windBeaufortScale,
-    )
+        updateAt,
+        name,
+        iconClassname,
+        temperature,
+        main.humidity,
+        pressure,
+        weather[0].description,
+        sunriseTime,
+        sunsetTime,
+        windDirection,
+        wind.speed,
+        windBeaufortScale,
+        isCold // Добавляем флаг холодной погоды
+    );
   }
+
+
 
   private handleError(error: any): Observable<never> {
     console.error("Weather service error:", error)

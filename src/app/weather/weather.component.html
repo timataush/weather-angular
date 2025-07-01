@@ -44,7 +44,9 @@
 
         <div class="current-weather glass-effect" *ngIf="weather">
             <div class="weather-icon">
-                <span [innerHTML]="getWeatherIcon(weather.iconClassname)"></span>
+<!--                <span [innerHTML]="getWeatherIcon(weather.iconClassname)"></span>-->
+                <span [innerHTML]="getWeatherIcon(weather.iconClassname, weather.isCold)"></span>
+
             </div>
             <div class="today-label">Today</div>
 

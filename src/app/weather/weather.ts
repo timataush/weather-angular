@@ -14,3 +14,4 @@ export class Weather {
     public windBeaufortScale: string
   ) {}
 }
+

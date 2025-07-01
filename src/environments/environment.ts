@@ -1,9 +1,18 @@
+// export const appConfig = {
+//   defaultUnit: "metric",
+//   defaultCity: {
+//     coord: {
+//       latitude: 53.893009,
+//       longitude: 27.567444,
+//     },
+//   },
+// }
 export const appConfig = {
   defaultUnit: "metric",
   defaultCity: {
     coord: {
-      latitude: 53.893009,
-      longitude: 27.567444,
+      latitude: -77.85,  // Антарктида (постоянно холодно)
+      longitude: 166.67
     },
   },
 }

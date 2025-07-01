@@ -56,19 +56,36 @@ export class WeatherComponent implements OnInit, OnDestroy {
     this.viewMode = mode
   }
 
-  getWeatherIcon(iconClass: string): string {
+  // getWeatherIcon(iconClass: string): string {
+  //   const iconMap: { [key: string]: string } = {
+  //     "wi-day-sunny": "☀️",
+  //     "wi-day-cloudy": "⛅",
+  //     "wi-cloudy": "☁️",
+  //     "wi-rain": "🌧️",
+  //     "wi-snow": "❄️",
+  //     "wi-thunderstorm": "⛈️",
+  //     "wi-night-clear": "🌙",
+  //     "wi-night-cloudy": "☁️",
+  //   }
+  //
+  //   return iconMap[iconClass] || "☀️"
+  // }
+
+  getWeatherIcon(iconClass: string, isCold: boolean): string {
     const iconMap: { [key: string]: string } = {
-      "wi-day-sunny": "☀️",
-      "wi-day-cloudy": "⛅",
-      "wi-cloudy": "☁️",
-      "wi-rain": "🌧️",
+      "wi-day-sunny": isCold ? "❄️" : "☀️",
+      "wi-day-cloudy": isCold ? "🌨️" : "⛅",
+      "wi-cloudy": isCold ? "🌨️" : "☁️",
+      "wi-rain": isCold ? "🌧️❄️" : "🌧️",
       "wi-snow": "❄️",
       "wi-thunderstorm": "⛈️",
-      "wi-night-clear": "🌙",
-      "wi-night-cloudy": "☁️",
-    }
+      "wi-night-clear": isCold ? "🌙❄️" : "🌙",
+      "wi-night-cloudy": isCold ? "☁️❄️" : "☁️",
+      "wi-day-snow": "❄️",
+      "wi-night-snow": "❄️"
+    };
 
-    return iconMap[iconClass] || "☀️"
+    return iconMap[iconClass] || (isCold ? "❄️" : "☀️");
   }
 
 
