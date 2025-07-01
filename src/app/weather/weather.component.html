@@ -1,0 +1,72 @@
+<div class="weather-container">
+    <div class="header">
+        <div class="time-section">
+            <div class="time">
+                <app-clock></app-clock>
+            </div>
+            <div class="date">
+                <app-date></app-date>
+            </div>
+        </div>
+        <div class="search-section">
+            <app-search-bar></app-search-bar>
+        </div>
+
+    </div>
+
+
+    <div class="auth-section">
+        <button class="btn btn-primary">Sign In</button>
+        <button class="btn btn-primary">Sign Up</button>
+    </div>
+
+    <!-- Schedule section -->
+
+    <div class="form">
+        <app-calendar class="calendar"></app-calendar>
+
+        <div class="forecast-controls">
+            <button class="btn btn-secondary" [class.active]="viewMode === 'daily'" (click)="setViewMode('daily')">
+                Daily
+            </button>
+            <button class="btn btn-secondary" [class.active]="viewMode === 'hourly'" (click)="setViewMode('hourly')">
+                Hourly
+            </button>
+        </div>
+    </div>
+
+
+
+
+
+    <div class="forecast-section">
+
+
+        <div class="current-weather glass-effect" *ngIf="weather">
+            <div class="weather-icon">
+                <span [innerHTML]="getWeatherIcon(weather.iconClassname)"></span>
+            </div>
+            <div class="today-label">Today</div>
+
+            <div class="temperature">
+                {{weather.temp}}°
+            </div>
+        </div>
+
+        <app-forecast
+
+
+                *ngIf="weather"
+                [cityName]="weather.city"
+                [measureOfTemp]="measureOfTemp"
+                [viewMode]="viewMode">
+
+
+
+        </app-forecast>
+
+    </div>
+
+    <!-- Current weather display -->
+
+</div>

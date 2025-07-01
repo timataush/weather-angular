@@ -1,0 +1,12 @@
+<div class="search-container glass-effect">
+    <input
+            type="text"
+            class="search-input"
+            [(ngModel)]="searchText"
+            (keypress)="onKeyPress($event)"
+            placeholder="Enter city name"
+            autocomplete="off">
+    <button class="search-btn btn btn-secondary" (click)="onSearch()">
+        Search
+    </button>
+</div>

@@ -1,0 +1,18 @@
+<div class="forecast-container glass-effect"  *ngIf="forecastData && forecastData.length > 0">
+    <div class="forecast-grid">
+        <div
+                class="forecast-item"
+                *ngFor="let day of getDisplayedForecast()"
+                [class.today]="day.currentDay">
+            <div class="day-name">
+                {{ day.currentDay ? 'Today' : (day.date | date: 'EEE') }}
+            </div>
+            <div class="weather-icon">
+                {{ getWeatherIcon(day.iconClassname) }}
+            </div>
+            <div class="temperature">
+                <span class="temp-high">{{ day.temperatureDay }}°</span>
+            </div>
+        </div>
+    </div>
+</div>

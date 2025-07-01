@@ -1,0 +1,13 @@
+<div class="form">
+    <div class="schedule-section glass-effect">
+        <div *ngIf="(tasks$ | async)?.length; else noTasks">
+            <div class="schedule-item" *ngFor="let task of tasks$ | async">
+                <span class="time-badge">{{ task.time || 'Нет времени' }}</span>
+                <span class="event-name">{{ task.name || 'Без названия' }}</span>
+            </div>
+        </div>
+        <ng-template #noTasks>
+            <p>Задачи не найдены</p>
+        </ng-template>
+    </div>
+</div>
